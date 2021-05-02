@@ -1,0 +1,193 @@
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs$ mkdir git-majonez
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs$ cd git-majonez/
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git init
+Initialized empty Git repository in /home/kasia/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez/.git/
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ touch main.cpp
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ nano main.cpp
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git add main.cpp 
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ got commit -m"Initial commit"
+bash: got: nie znaleziono polecenia
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git commit -m"Initial commit" 
+[master (root-commit) 19923ec] Initial commit
+ 1 file changed, 6 insertions(+)
+ create mode 100644 main.cpp
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ nano main.cpp
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git commit -m"Farewell changed"
+On branch master
+Changes not staged for commit:
+        modified:   main.cpp
+
+no changes added to commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git add main.cpp 
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git commit -m"Farewell changed"
+[master f959472] Farewell changed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git remote add origin https://github.com/gyrydymptum/git-majonez.git
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git push -u origin master
+Username for 'https://github.com': gyrydymptum@gmail.com
+Password for 'https://gyrydymptum@gmail.com@github.com': 
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 593 bytes | 197.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/gyrydymptum/git-majonez.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git branch cs
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git checkout cs
+Switched to branch 'cs'
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git status
+On branch cs
+nothing to commit, working tree clean
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git show
+commit f959472091731cb4f6d19d836caea4b3c04438f7 (HEAD -> cs, origin/master, master)
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:19:29 2021 +0200
+
+    Farewell changed
+
+diff --git a/main.cpp b/main.cpp
+index 76a1e77..5886151 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -1,6 +1,6 @@
+ #include <iostream>
+ #include <string>
+ int main() {
+-std::cout << "Goodbye World\n";
++std::cout << "Hello World\n";
+ return 0;
+ }
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git reflog
+f959472 (HEAD -> cs, origin/master, master) HEAD@{0}: checkout: moving from master to cs
+f959472 (HEAD -> cs, origin/master, master) HEAD@{1}: commit: Farewell changed
+19923ec HEAD@{2}: commit (initial): Initial commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git reset  --hardf959472
+error: unknown option `hardf959472'
+usage: git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [<commit>]
+   or: git reset [-q] [<tree-ish>] [--] <paths>...
+   or: git reset --patch [<tree-ish>] [--] [<paths>...]
+
+    -q, --quiet           be quiet, only report errors
+    --mixed               reset HEAD and index
+    --soft                reset only HEAD
+    --hard                reset HEAD, index and working tree
+    --merge               reset HEAD, index and working tree
+    --keep                reset HEAD but keep local changes
+    --recurse-submodules[=<reset>]
+                          control recursive updating of submodules
+    -p, --patch           select hunks interactively
+    -N, --intent-to-add   record only the fact that removed paths will be added later
+
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git reset  --hard f959472
+HEAD is now at f959472 Farewell changed
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git show
+commit f959472091731cb4f6d19d836caea4b3c04438f7 (HEAD -> cs, origin/master, master)
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:19:29 2021 +0200
+
+    Farewell changed
+
+diff --git a/main.cpp b/main.cpp
+index 76a1e77..5886151 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -1,6 +1,6 @@
+ #include <iostream>
+ #include <string>
+ int main() {
+-std::cout << "Goodbye World\n";
++std::cout << "Hello World\n";
+ return 0;
+ }
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git log
+commit f959472091731cb4f6d19d836caea4b3c04438f7 (HEAD -> cs, origin/master, master)
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:19:29 2021 +0200
+
+    Farewell changed
+
+commit 19923ec5e05a7e7f0614aaaf5e53b2afc3b5d776
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:14:28 2021 +0200
+
+    Initial commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ ^C
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git reset  --hard head
+fatal: ambiguous argument 'head': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git reset  --hard HEAD
+HEAD is now at f959472 Farewell changed
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ GIT LOG
+bash: GIT: nie znaleziono polecenia
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git log
+commit f959472091731cb4f6d19d836caea4b3c04438f7 (HEAD -> cs, origin/master, master)
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:19:29 2021 +0200
+
+    Farewell changed
+
+commit 19923ec5e05a7e7f0614aaaf5e53b2afc3b5d776
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:14:28 2021 +0200
+
+    Initial commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ ^C
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git reset  --hard HEAD^
+HEAD is now at 19923ec Initial commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git log
+commit 19923ec5e05a7e7f0614aaaf5e53b2afc3b5d776 (HEAD -> cs)
+Author: Gyrydymptum <gyrydymptum@gmail.com>
+Date:   Sun May 2 11:14:28 2021 +0200
+
+    Initial commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ nano main.cpp 
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git commit -m"Greetings"
+On branch cs
+Changes not staged for commit:
+        modified:   main.cpp
+
+no changes added to commit
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git add main.cpp                               kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git commit -m"Greetings"
+[cs cee9e89] Greetings
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git push origin cs
+Username for 'https://github.com': gyrydymptum@gmail.com
+Password for 'https://gyrydymptum@gmail.com@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 334 bytes | 167.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'cs' on GitHub by visiting:
+remote:      https://github.com/gyrydymptum/git-majonez/pull/new/cs
+remote: 
+To https://github.com/gyrydymptum/git-majonez.git
+ * [new branch]      cs -> cs
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git checkout master 
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git merge cs
+Auto-merging main.cpp
+CONFLICT (content): Merge conflict in main.cpp
+Automatic merge failed; fix conflicts and then commit the result.
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ nano main.cpp
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git add main.cpp 
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+
+        modified:   main.cpp
+
+kasia@kasilap:~/Dokumenty/DyskD/CPP_workspace/kurs/git-majonez$ git commit 
+[master d88ef99] Merge branch 'cs'
